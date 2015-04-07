@@ -10,29 +10,34 @@ position.position_back = {}
 -- Teleportation a la derniere position connue
 -- ---------------------------------------------------------------------------------------------------------------------
 back.back = function(name)
-    minetest.chat_send_player(name, "Mod back : Retour a votre position precedente")
+    minetest.chat_send_player(name, "Retour a votre position precedente")
 
     local player = minetest.get_player_by_name(name)
     if player == nil then
-        -- just a check to prevent the server crashing
         return false
     end
 
+    -- Verif si position presente pour le joueur
     if position.position_back[name] then
     else
         minetest.chat_send_player(name, "Pas de position sauvegardee...")
         return false
     end
 
-    player:setpos(position.position_back[player:get_player_name()])
+    -- Sauvegarde de la derniere position connue avant modif du fichier "back_positions"
+    local p = position.position_back[player:get_player_name()]
+
+    -- Sauvegarde de la position courante avant retour
+    back.save_position(name)
+
+    -- Tp vers position "p"
+    player:setpos(p)
     return true
-    -- local input = io.open(position.position_file["f"], "r")
-    -- io.close(output)
 end
 
 
 -- ---------------------------------------------------------------------------------------------------------------------
---
+-- Sauvegarde de la position courante
 -- ---------------------------------------------------------------------------------------------------------------------
 function back.save_position(name)
     local player = minetest.get_player_by_name(name)
@@ -48,6 +53,8 @@ function back.save_position(name)
         output:write(minetest.serialize(position.position_back))
         io.close(output)
         return true
+    else
+        return false
     end
 end
 
