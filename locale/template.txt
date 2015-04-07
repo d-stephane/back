@@ -1,0 +1,7 @@
+[Back] Could not load mod =
+[Back] Mod loaded =
+[Back] Backup the current position -> =
+Back to your previous position =
+No saved position... =
+Back to the last known position =
+Player not found =

@@ -1,6 +1,7 @@
 
 -- back functions
 
+local S = back.intllib
 local position = {}
 position.position_file = {["f"] = minetest.get_worldpath() .. "/back_positions"}
 position.position_back = {}
@@ -10,7 +11,7 @@ position.position_back = {}
 -- Teleportation a la derniere position connue
 -- ---------------------------------------------------------------------------------------------------------------------
 back.back = function(name)
-    minetest.chat_send_player(name, "Retour a votre position precedente")
+    minetest.chat_send_player(name, S("Back to your previous position"))
 
     local player = minetest.get_player_by_name(name)
     if player == nil then
@@ -20,7 +21,7 @@ back.back = function(name)
     -- Verif si position presente pour le joueur
     if position.position_back[name] then
     else
-        minetest.chat_send_player(name, "Pas de position sauvegardee...")
+        minetest.chat_send_player(name, S("No saved position..."))
         return false
     end
 
@@ -45,7 +46,7 @@ function back.save_position(name)
 
     local player = minetest.get_player_by_name(name)
     local pos = player:getpos()
-    minetest.log("action","[back] Sauvegarde de la position courante -> "..minetest.serialize(pos))
+    minetest.log("action",S("[Back] Backup the current position ->")..minetest.serialize(pos))
 
     if position.position_back[player:get_player_name()] ~= pos then
         position.position_back[player:get_player_name()] = pos

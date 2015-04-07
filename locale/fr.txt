@@ -1,0 +1,7 @@
+[Back] Could not load mod = [Back] Impossible de charger le mod
+[Back] Mod loaded = [Back] Mod chargé
+[Back] Backup the current position -> = [Back] Sauvegarde de la position courante ->
+Back to your previous position = Retour a votre position précedente
+No saved position... = Pas de position sauvegardée...
+Back to the last known position = Retour à la dernière position connue
+Player not found = Joueur inexistant
