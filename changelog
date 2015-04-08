@@ -1,6 +1,10 @@
 
-  ChangeLog
- ===========
+    ChangeLog
+    ===========
+
+    [2015-04-08]
+    - Suppression de code en double.
+    - Modification dans save_position
 
     [2015-04-07]
     - Sauvegarde de la position courante avant tp vers la dernière position connue.

@@ -42,9 +42,6 @@ end
 -- ---------------------------------------------------------------------------------------------------------------------
 function back.save_position(name)
     local player = minetest.get_player_by_name(name)
-    -- minetest.chat_send_player(name, "Mod back : Position sauvegardee")
-
-    local player = minetest.get_player_by_name(name)
     local pos = player:getpos()
     minetest.log("action",S("[Back] Backup the current position ->")..minetest.serialize(pos))
 
@@ -53,6 +50,8 @@ function back.save_position(name)
         local output = io.open(position.position_file["f"], "w")
         output:write(minetest.serialize(position.position_back))
         io.close(output)
+
+        back.reload_positions()
         return true
     else
         return false
@@ -63,7 +62,8 @@ end
 -- ---------------------------------------------------------------------------------------------------------------------
 --
 -- ---------------------------------------------------------------------------------------------------------------------
-local function reload_positions()
+-- local function reload_positions()
+function back.reload_positions()
     for key,_ in pairs(position.position_file) do
         local input = io.open(position.position_file[key], "r")
         if input then
@@ -94,4 +94,4 @@ end
 
 -- ---------------------------------------------------------------------------------------------------------------------
 
-reload_positions()
+-- reload_positions()
