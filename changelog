@@ -2,6 +2,9 @@
     ChangeLog
     ===========
 
+    [2015-04-10]
+    - Ajout commentaire et modif infos de debug
+
     [2015-04-08]
     - Suppression de code en double.
     - Modification dans save_position

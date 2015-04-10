@@ -43,7 +43,7 @@ end
 function back.save_position(name)
     local player = minetest.get_player_by_name(name)
     local pos = player:getpos()
-    minetest.log("action",S("[Back] Backup the current position ->")..minetest.serialize(pos))
+    minetest.log("action",S("[Back] Backup the current position ->").." "..name.." - "..minetest.serialize(pos))
 
     if position.position_back[player:get_player_name()] ~= pos then
         position.position_back[player:get_player_name()] = pos
@@ -60,9 +60,8 @@ end
 
 
 -- ---------------------------------------------------------------------------------------------------------------------
---
+-- Reload du fichier "back_positions"
 -- ---------------------------------------------------------------------------------------------------------------------
--- local function reload_positions()
 function back.reload_positions()
     for key,_ in pairs(position.position_file) do
         local input = io.open(position.position_file[key], "r")
@@ -93,5 +92,3 @@ end
 
 
 -- ---------------------------------------------------------------------------------------------------------------------
-
--- reload_positions()
